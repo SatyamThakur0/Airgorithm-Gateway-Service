@@ -1,9 +1,20 @@
 import express from "express";
 import expressProxy from "express-http-proxy";
 const app = express();
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
+import cors from "cors";
 dotenv.config();
 const PORT = process.env.PORT;
+
+app.use(
+    cors({
+        origin: [
+            `${process.env.AIRLINE_USER_PANEL_URL}`,
+            `${process.env.AIRLINE_ADMIN_PANEL_URL}`,
+        ],
+    })
+);
+
 app.use(
     "/auth",
     expressProxy(`${process.env.AIRLINE_AUTH_SERVICE_URL}`, {
