@@ -12,6 +12,7 @@ app.use(
             `${process.env.AIRLINE_USER_PANEL_URL}`,
             `${process.env.AIRLINE_ADMIN_PANEL_URL}`,
         ],
+        credentials: true,
     })
 );
 
